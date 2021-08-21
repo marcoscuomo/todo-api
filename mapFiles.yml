@@ -1,0 +1,57 @@
+src
+  modules
+    users
+      dtos
+        ICreateUserDTO.ts
+      infra
+        typeorm
+          entities
+            User.ts => OK
+          repositories
+            UsersRepository.ts
+      repositores
+        IUsersRepository.ts
+      useCases
+        createUser
+          CreateUserCase.ts
+          CreateUserController.ts
+    todos
+      dtos
+        ICreateTodoDTO.ts => OK
+      infra
+        typeorm
+          entities
+            Todo.ts => OK
+          repositories
+            TodosRepository.ts => OK
+      repositories
+        ITodosRepository.ts => OK
+      useCases
+        createTodo
+          createTodoControler.ts
+          createCarUseCase.ts
+        listTodo
+          listTodoController.ts
+          listCarUseCase.ts
+        updateTodo
+          updateTodoController.ts
+          updateTodoUseCase.ts
+        deleteTodo
+          deleteTodoController.ts
+          deleteTodoUseCase.ts
+  shared
+    container
+      index.ts
+    erros
+      AppErros.ts
+    infra
+      http
+        routes
+          todo.routes.ts
+          index.ts
+          users.routes.ts
+        server.ts
+      typeorm
+        migrations => OK
+        index.ts
+  swagger.json
