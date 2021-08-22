@@ -12,7 +12,7 @@ class TodosRepository implements ITodosRepository {
 
   constructor(){
     this.repository = getRepository(Todo);
-  }      
+  }        
   
   async create({ title, user_id }: ICreateTodoDTO): Promise<Todo> {
     const todo = this.repository.create({
@@ -70,6 +70,15 @@ class TodosRepository implements ITodosRepository {
     .where("id = :id")
     .setParameters({id})
     .execute();
+  }
+
+  async listTodoByUser(user_id: string): Promise<Todo[]> {
+    
+    const todos = await this.repository.find({
+      where: {user_id}
+    });
+
+    return todos;
   }
 
 }

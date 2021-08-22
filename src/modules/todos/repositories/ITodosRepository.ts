@@ -10,6 +10,7 @@ interface ITodosRepository {
   findByTitle(title: string): Promise<Todo>;
   updateTodo(data: IUpdateTodoDTO): Promise<void>;
   deleteTodo(data: IDeleteTodoDTO): Promise<void>;
+  listTodoByUser(user_id: string): Promise<Todo[]>;
 }
 
 export { ITodosRepository };
