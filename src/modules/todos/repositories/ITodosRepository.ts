@@ -1,4 +1,6 @@
 import { ICreateTodoDTO } from "../dtos/ICreateTodoDTO";
+import { IDeleteTodoDTO } from "../dtos/IDeleteTodoDTO";
+import { IUpdateTodoDTO } from "../dtos/IUpdateTodoDTO";
 import { Todo } from "../infra/typeorm/entities/Todo";
 
 interface ITodosRepository {
@@ -6,6 +8,9 @@ interface ITodosRepository {
   findById(id: string): Promise<Todo>;
   listTodos(): Promise<Todo[]>;
   findByTitle(title: string): Promise<Todo>;
+  updateTodo(data: IUpdateTodoDTO): Promise<void>;
+  deleteTodo(data: IDeleteTodoDTO): Promise<void>;
+  listTodoByUser(user_id: string): Promise<Todo[]>;
 }
 
 export { ITodosRepository };
