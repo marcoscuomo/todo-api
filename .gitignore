@@ -2,4 +2,5 @@
 /tmp
 
 yarn.lock
+yarn-error.log
 .gitignore

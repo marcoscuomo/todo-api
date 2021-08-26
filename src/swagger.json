@@ -1,0 +1,190 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Todo Documentation",
+    "description": "This is an API Todo",
+    "version": "1.0.0",
+    "contact": {
+      "email": "marcos.souza.mob@gmail.com"
+    }
+  },
+  "paths": {
+    "/todos/list": {
+      "get": {
+        "tags": ["todo"],
+        "summary": "List all todos",
+        "description": "List all todos, no need to be authenticated",
+        "responses": {
+          "201": {
+            "description": "Listed"
+          }
+        }
+      }
+    },
+    "/todos": {
+      "post": {
+        "tags": ["todo"],
+        "sumary": "Create a new Todo",
+        "description": "Create a new Todo in the application",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "title": "Study JS"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Todo Created"
+          },
+          "401": {
+            "description": "Todo already exists"
+          }
+        }
+      }
+    },
+    "todos/{id}": {
+      "post": {
+        "tags": ["todo"],
+        "summary": "Delete Todo",
+        "description": "Delete Todo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Todo id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "response": {
+          "200": {
+            "description": "Todo deleted"
+          }
+        }
+      }
+    },
+    "todos/list_user": {
+      "get": {
+        "tags": ["todo"],
+        "summary": "List Todo by User",
+        "description": "List all todos for the authenticated user",
+        "response": {
+          "200": {
+            "description": "Listed"
+          }
+        }
+      }
+    },
+    "todos/update/{id}": {
+      "post": {
+        "tags": ["todo"],
+        "summary": "Update Todo",
+        "description": "Update Todo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Todo id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "completed": "boolean"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "users/sessions": {
+      "post": {
+        "tags": ["user"],
+        "summary": "Authentication user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Email or password is incorrect"
+          }
+        }
+      }
+    },
+    "users": {
+      "post": {
+        "tags": ["user"],
+        "summary": "Create a new user",
+        "description": "Create a new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}
